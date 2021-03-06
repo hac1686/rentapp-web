@@ -3,6 +3,7 @@ import Welcome from './scenes/Welcome'
 import Properties from './scenes/Properties'
 import PropertyDetails from './scenes/PropertyDetails'
 import TopMenu from './components/TopMenu'
+import NewProperty from './scenes/NewProperty'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -14,6 +15,7 @@ function App() {
      <Switch>
         <Route path="/properties/:propertyId" component={PropertyDetails} />
         <Route path="/properties" component={Properties} />
+        <Route path="/new" component={NewProperty}/>
         <Route path="/" component={Welcome} />
      </Switch>
    </Router>
