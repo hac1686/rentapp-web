@@ -19,8 +19,8 @@ function Properties() {
          .catch(err => console.log(err))
     }, [])
   return (
-      //<> is React Fragment
-  <> 
+    
+    <section style={{ padding: '2rem'}}>
   <h1>Properties List</h1>
   {!propertyList
   ?<p>Loading...</p>
@@ -32,7 +32,7 @@ function Properties() {
       })}
     </CardColumns>
 }
-</>
+</section>
 
   )
 }

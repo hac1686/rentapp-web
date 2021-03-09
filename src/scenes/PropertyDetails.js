@@ -1,20 +1,39 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import Jumbotron from 'react-bootstrap/Jumbotron'
+import Container from 'react-bootstrap/Container'
+import Image from 'react-bootstrap/Image'
 
-function PropertyDetails(){
+function PropertyDetails() {
     const { propertyId } = useParams()
     const [propertyData, setPropertyData] = useState(null)
     useEffect(() => {
         fetch('https://rentbunny-api.web.app/properties/' + propertyId)
-         .then(response => response.json())
-         .then(data => setPropertyData(data))
-         .catch(err => console.log(err))
+            .then(response => response.json())
+            .then(data => setPropertyData(data))
+            .catch(err => console.log(err))
     }, [propertyId]) //the last brackets are dependency list, makes refetch data if it changes
 
-    if(!propertyData){
+    if (!propertyData) {
         return <h2>Loading...</h2>
     }
-    return <h2>{propertyData.title}</h2>
+    return (
+        <Jumbotron fluid>
+            <Container>
+                <h1>{propertyData.title}</h1>
+                <h2>{propertyData.category}:{' '}
+                    {propertyData.address}, {' '}
+                    {propertyData.city}{' '}
+                    {propertyData.state}{' '}
+                    {propertyData.zipCode}</h2>
+                <p>{propertyData.description}</p>
+            </Container>
+            {propertyData.photo &&
+                <Image src={propertyData.photo}
+                    alt={propertyData.description} fluid />
+            }
+        </Jumbotron>
+    )
 
 }
 

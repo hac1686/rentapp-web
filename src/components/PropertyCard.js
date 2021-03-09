@@ -7,6 +7,12 @@ const cardStyle = {
     width: '18rem',
 }
 
+const imgStyle = {
+    height: '300px',
+    width: '18rem',
+    backgroundColor: '#808080'
+}
+
 const defaultImg = 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Vogelhaus_Modell_Eduard_4.JPG/220px-Vogelhaus_Modell_Eduard_4.JPG'
 
 function PropertyCard({ property }){
@@ -14,7 +20,7 @@ function PropertyCard({ property }){
      
       <Link to ={`/properties/${property.id}`}>
          <Card style={cardStyle}>
-         <Card.Img variant="top"
+         <Card.Img variant="top" style={imgStyle}
          src={property.photo || defaultImg} />
          <Card.Body>
              <Card.Title>{property.title}</Card.Title>
